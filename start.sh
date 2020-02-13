@@ -11,10 +11,10 @@ function logging {
     echo "[INFO] $*"
 }
 function build_venv {
-    if [ ! -d env ]; then
-        virtualenv env
+    if [ ! -d env375 ]; then
+        virtualenv env375
     fi
-    . env/bin/activate
+    . env375/bin/activate
     pip3 install -r requirements.txt
 
 }

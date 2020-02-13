@@ -1,0 +1,42 @@
+{% extends "account/layout.html" %}
+
+{% block content %}
+    <div class="container theme-showcase" role="main">         
+        
+        <br><br><br><br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                 
+                    <th>ID</th>
+                    <th>博客名称</th>
+                    <th>大字标题</th>
+                    <th>博客内容 </th>
+                    <th>作者</th>
+            
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in entrys %}
+                <tr>
+                    
+                    <td>{{ e.id }}</td>
+                    <td>{{ e.blog }}</td>
+                    <td>{{ e.headline }}</td>
+                    <td>{{ e.body_text }}</td>                   
+                    <td>{% for i in e.author.all %}  
+                            {{i.name}},
+                        {% endfor %}
+                    </td>
+                    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {% include 'home/djangopage.html' %}
+        
+    </div> <!-- /container -->
+{% endblock %}

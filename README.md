@@ -1,4 +1,4 @@
-python3.6.6   django1.11.5  部署正常                      
+python3.7.5   django2.2.6  部署正常                      
 
 ### 功能：使用django-import-export  admin具有导入和导出数据库的数据功能。 
       

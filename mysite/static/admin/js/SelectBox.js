@@ -19,11 +19,7 @@
             var box = document.getElementById(id);
             var node;
             $(box).empty(); // clear all options
-<<<<<<< HEAD
-            var new_options = box.outerHTML.slice(0, -9);  // grab just the opening tag
-=======
             var new_options = box.outerHTML.slice(0, -9); // grab just the opening tag
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             var cache = SelectBox.cache[id];
             for (var i = 0, j = cache.length; i < j; i++) {
                 node = cache[i];
@@ -52,11 +48,7 @@
                     token = tokens[k];
                     if (node_text.indexOf(token) === -1) {
                         node.displayed = 0;
-<<<<<<< HEAD
-                        break;  // Once the first token isn't found we're done
-=======
                         break; // Once the first token isn't found we're done
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
                     }
                 }
             }

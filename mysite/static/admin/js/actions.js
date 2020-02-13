@@ -8,61 +8,6 @@
         var actionCheckboxes = $(this);
         var list_editable_changed = false;
         var showQuestion = function() {
-<<<<<<< HEAD
-            $(options.acrossClears).hide();
-            $(options.acrossQuestions).show();
-            $(options.allContainer).hide();
-        },
-        showClear = function() {
-            $(options.acrossClears).show();
-            $(options.acrossQuestions).hide();
-            $(options.actionContainer).toggleClass(options.selectedClass);
-            $(options.allContainer).show();
-            $(options.counterContainer).hide();
-        },
-        reset = function() {
-            $(options.acrossClears).hide();
-            $(options.acrossQuestions).hide();
-            $(options.allContainer).hide();
-            $(options.counterContainer).show();
-        },
-        clearAcross = function() {
-            reset();
-            $(options.acrossInput).val(0);
-            $(options.actionContainer).removeClass(options.selectedClass);
-        },
-        checker = function(checked) {
-            if (checked) {
-                showQuestion();
-            } else {
-                reset();
-            }
-            $(actionCheckboxes).prop("checked", checked)
-                .parent().parent().toggleClass(options.selectedClass, checked);
-        },
-        updateCounter = function() {
-            var sel = $(actionCheckboxes).filter(":checked").length;
-            // data-actions-icnt is defined in the generated HTML
-            // and contains the total amount of objects in the queryset
-            var actions_icnt = $('.action-counter').data('actionsIcnt');
-            $(options.counterContainer).html(interpolate(
-            ngettext('%(sel)s of %(cnt)s selected', '%(sel)s of %(cnt)s selected', sel), {
-                sel: sel,
-                cnt: actions_icnt
-            }, true));
-            $(options.allToggle).prop("checked", function() {
-                var value;
-                if (sel === actionCheckboxes.length) {
-                    value = true;
-                    showQuestion();
-                } else {
-                    value = false;
-                    clearAcross();
-                }
-                return value;
-            });
-        };
-=======
                 $(options.acrossClears).hide();
                 $(options.acrossQuestions).show();
                 $(options.allContainer).hide();
@@ -116,7 +61,6 @@
                     return value;
                 });
             };
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
         // Show counter by default
         $(options.counterContainer).show();
         // Check state of checkboxes and reinit state if needed
@@ -127,28 +71,16 @@
                 showClear();
             }
         });
-<<<<<<< HEAD
-        $(options.allToggle).show().click(function() {
-            checker($(this).prop("checked"));
-            updateCounter();
-        });
-        $("a", options.acrossQuestions).click(function(event) {
-=======
         $(options.allToggle).show().on('click', function() {
             checker($(this).prop("checked"));
             updateCounter();
         });
         $("a", options.acrossQuestions).on('click', function(event) {
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             event.preventDefault();
             $(options.acrossInput).val(1);
             showClear();
         });
-<<<<<<< HEAD
-        $("a", options.acrossClears).click(function(event) {
-=======
         $("a", options.acrossClears).on('click', function(event) {
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             event.preventDefault();
             $(options.allToggle).prop("checked", false);
             clearAcross();
@@ -156,11 +88,7 @@
             updateCounter();
         });
         lastChecked = null;
-<<<<<<< HEAD
-        $(actionCheckboxes).click(function(event) {
-=======
         $(actionCheckboxes).on('click', function(event) {
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             if (!event) { event = window.event; }
             var target = event.target ? event.target : event.srcElement;
             if (lastChecked && $.data(lastChecked) !== $.data(target) && event.shiftKey === true) {
@@ -181,26 +109,15 @@
             lastChecked = target;
             updateCounter();
         });
-<<<<<<< HEAD
-        $('form#changelist-form table#result_list tr').find('td:gt(0) :input').change(function() {
-            list_editable_changed = true;
-        });
-        $('form#changelist-form button[name="index"]').click(function(event) {
-=======
         $('form#changelist-form table#result_list tr').on('change', 'td:gt(0) :input', function() {
             list_editable_changed = true;
         });
         $('form#changelist-form button[name="index"]').on('click', function(event) {
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             if (list_editable_changed) {
                 return confirm(gettext("You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost."));
             }
         });
-<<<<<<< HEAD
-        $('form#changelist-form input[name="_save"]').click(function(event) {
-=======
         $('form#changelist-form input[name="_save"]').on('click', function(event) {
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             var action_changed = false;
             $('select option:selected', options.actionContainer).each(function() {
                 if ($(this).val()) {

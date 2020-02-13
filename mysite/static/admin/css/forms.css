@@ -177,11 +177,7 @@ form .aligned table p {
     padding-left: 0;
 }
 
-<<<<<<< HEAD
-fieldset .field-box {
-=======
 fieldset .fieldBox {
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
     float: left;
     margin-right: 20px;
 }
@@ -295,8 +291,6 @@ body.popup .submit-row {
     color: #fff;
 }
 
-<<<<<<< HEAD
-=======
 .submit-row a.closelink {
     display: inline-block;
     background: #bbbbbb;
@@ -308,22 +302,18 @@ body.popup .submit-row {
     color: #fff;
 }
 
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
 .submit-row a.deletelink:focus,
 .submit-row a.deletelink:hover,
 .submit-row a.deletelink:active {
     background: #a41515;
 }
 
-<<<<<<< HEAD
-=======
 .submit-row a.closelink:focus,
 .submit-row a.closelink:hover,
 .submit-row a.closelink:active {
     background: #aaaaaa;
 }
 
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
 /* CUSTOM FORM FIELDS */
 
 .vSelectMultipleField {
@@ -363,11 +353,7 @@ body.popup .submit-row {
     width: 2.2em;
 }
 
-<<<<<<< HEAD
-.vTextField {
-=======
 .vTextField, .vUUIDField {
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
     width: 20em;
 }
 

@@ -1,5 +1,3 @@
-功能（显示）：   hello world!
-
 python3.7.5   django2.2.6
 一、 运行 
 1、运行：./start.sh 

@@ -4,47 +4,6 @@
 var isOpera = (navigator.userAgent.indexOf("Opera") >= 0) && parseFloat(navigator.appVersion);
 var isIE = ((document.all) && (!isOpera)) && parseFloat(navigator.appVersion.split("MSIE ")[1].split(";")[0]);
 
-<<<<<<< HEAD
-// Cross-browser event handlers.
-function addEvent(obj, evType, fn) {
-    'use strict';
-    if (obj.addEventListener) {
-        obj.addEventListener(evType, fn, false);
-        return true;
-    } else if (obj.attachEvent) {
-        var r = obj.attachEvent("on" + evType, fn);
-        return r;
-    } else {
-        return false;
-    }
-}
-
-function removeEvent(obj, evType, fn) {
-    'use strict';
-    if (obj.removeEventListener) {
-        obj.removeEventListener(evType, fn, false);
-        return true;
-    } else if (obj.detachEvent) {
-        obj.detachEvent("on" + evType, fn);
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function cancelEventPropagation(e) {
-    'use strict';
-    if (!e) {
-        e = window.event;
-    }
-    e.cancelBubble = true;
-    if (e.stopPropagation) {
-        e.stopPropagation();
-    }
-}
-
-=======
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
 // quickElement(tagType, parentReference [, textInChildNode, attribute, attributeValue ...]);
 function quickElement() {
     'use strict';
@@ -71,11 +30,7 @@ function removeChildren(a) {
 
 // ----------------------------------------------------------------------------
 // Find-position functions by PPK
-<<<<<<< HEAD
-// See http://www.quirksmode.org/js/findpos.html
-=======
 // See https://www.quirksmode.org/js/findpos.html
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
 // ----------------------------------------------------------------------------
 function findPosX(obj) {
     'use strict';
@@ -198,15 +153,9 @@ function findPosY(obj) {
         return result;
     };
 
-<<<<<<< HEAD
-// ----------------------------------------------------------------------------
-// String object extensions
-// ----------------------------------------------------------------------------
-=======
     // ----------------------------------------------------------------------------
     // String object extensions
     // ----------------------------------------------------------------------------
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
     String.prototype.pad_left = function(pad_length, pad_string) {
         var new_string = this;
         for (var i = 0; new_string.length < pad_length; i++) {
@@ -222,20 +171,6 @@ function findPosY(obj) {
         var day, month, year;
         while (i < split_format.length) {
             switch (split_format[i]) {
-<<<<<<< HEAD
-                case "%d":
-                    day = date[i];
-                    break;
-                case "%m":
-                    month = date[i] - 1;
-                    break;
-                case "%Y":
-                    year = date[i];
-                    break;
-                case "%y":
-                    year = date[i];
-                    break;
-=======
             case "%d":
                 day = date[i];
                 break;
@@ -248,7 +183,6 @@ function findPosY(obj) {
             case "%y":
                 year = date[i];
                 break;
->>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             }
             ++i;
         }

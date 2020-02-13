@@ -23,15 +23,14 @@ function del_db {
     logging "Clean"
     rm -rf "db.sqlite3"
     rm -rf "account/migrations/0001_initial.py"
-   
-
+    
 }
 
 function creator_db {
     logging "makemigrations" "account"
     python "manage.py" "makemigrations" "account"
 
-    
+
     logging "migrate"
     python "manage.py" "migrate"
     

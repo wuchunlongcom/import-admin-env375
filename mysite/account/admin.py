@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-
-
 from .models import  Blog, Author, Entry
+
+
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):    
     list_display = ('id','name','tagline')
+   
+  
     
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):    

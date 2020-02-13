@@ -21,8 +21,10 @@ if __name__ == "__main__":
     customerGroup.permissions.add()
     customerGroup.save()
         
+    # 创建超级用户 admin/admin
     if not User.objects.filter(username = 'admin'):
-        User.objects.create_superuser('admin', 'admin@test.com','admin')     
+        User.objects.create_superuser('admin', 'admin@test.com','admin')
+     
 
 """    
     from account.models import Blog, Author, Entry

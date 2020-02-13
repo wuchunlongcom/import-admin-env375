@@ -1,25 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
+
+
 from .models import  Blog, Author, Entry
-
-from import_export.admin import ExportActionModelAdmin, ImportExportMixin, ImportMixin
-from import_export.resources import ModelResource
-
-class BlogResource(ModelResource):
-
-    class Meta:
-        model = Blog
-
-#     def for_delete(self, row, instance):
-#         return self.fields['name'].clean(row) == ''
-
-
 @admin.register(Blog)
-class BlogAdmin(ImportExportMixin, admin.ModelAdmin):    
+class BlogAdmin(admin.ModelAdmin):    
     list_display = ('id','name','tagline')
-    resource_class = BlogResource
-  
     
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):    

@@ -11,11 +11,11 @@ function logging {
     echo "[INFO] $*"
 }
 function build_venv {
-    if [ ! -d env375 ]; then
-        virtualenv env375
+    if [ ! -d env ]; then
+        virtualenv env
     fi
-    . env375/bin/activate
-    pip3 install -r requirements.txt
+    . env/bin/activate
+    pip install -r requirements.txt
 
 }
 
@@ -23,7 +23,7 @@ function del_db {
     logging "Clean"
     rm -rf "db.sqlite3"
     rm -rf "account/migrations/0001_initial.py"
-    rm -rf "core/migrations/0001_initial.py"
+   
 
 }
 
@@ -31,9 +31,7 @@ function creator_db {
     logging "makemigrations" "account"
     python "manage.py" "makemigrations" "account"
 
-    logging "makemigrations" "core"
-    python "manage.py" "makemigrations" "core"
-
+    
     logging "migrate"
     python "manage.py" "migrate"
     

@@ -423,7 +423,11 @@ textarea {
 }
 
 input[type=text], input[type=password], input[type=email], input[type=url],
+<<<<<<< HEAD
 input[type=number], textarea, select, .vTextField {
+=======
+input[type=number], input[type=tel], textarea, select, .vTextField {
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px 6px;
@@ -431,8 +435,13 @@ input[type=number], textarea, select, .vTextField {
 }
 
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
+<<<<<<< HEAD
 input[type=url]:focus, input[type=number]:focus, textarea:focus, select:focus,
 .vTextField:focus {
+=======
+input[type=url]:focus, input[type=number]:focus, input[type=tel]:focus,
+textarea:focus, select:focus, .vTextField:focus {
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
     border-color: #999;
 }
 
@@ -441,6 +450,11 @@ select {
 }
 
 select[multiple] {
+<<<<<<< HEAD
+=======
+    /* Allow HTML size attribute to override the height in the rule above. */
+    height: auto;
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
     min-height: 150px;
 }
 
@@ -662,6 +676,14 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
 
 /* ACTION ICONS */
 
+<<<<<<< HEAD
+=======
+.viewlink, .inlineviewlink {
+    padding-left: 16px;
+    background: url(../img/icon-viewlink.svg) 0 1px no-repeat;
+}
+
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
 .addlink {
     padding-left: 16px;
     background: url(../img/icon-addlink.svg) 0 1px no-repeat;
@@ -822,10 +844,19 @@ table#change-history tbody th {
 
 #header {
     width: auto;
+<<<<<<< HEAD
     height: 40px;
     padding: 10px 40px;
     background: #417690;
     line-height: 40px;
+=======
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: #417690;
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
     color: #ffc;
     overflow: hidden;
 }

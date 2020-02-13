@@ -58,7 +58,11 @@
 
     function updateRelatedObjectLinks(triggeringLink) {
         var $this = $(triggeringLink);
+<<<<<<< HEAD
         var siblings = $this.nextAll('.change-related, .delete-related');
+=======
+        var siblings = $this.nextAll('.view-related, .change-related, .delete-related');
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
         if (!siblings.length) {
             return;
         }
@@ -108,6 +112,15 @@
                 this.value = newId;
             }
         });
+<<<<<<< HEAD
+=======
+        selects.next().find('.select2-selection__rendered').each(function() {
+            // The element can have a clear button as a child.
+            // Use the lastChild to modify only the displayed value.
+            this.lastChild.textContent = newRepr;
+            this.title = newRepr;
+        });
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
         win.close();
     }
 
@@ -140,7 +153,11 @@
     window.dismissAddAnotherPopup = dismissAddRelatedObjectPopup;
 
     $(document).ready(function() {
+<<<<<<< HEAD
         $("a[data-popup-opener]").click(function(event) {
+=======
+        $("a[data-popup-opener]").on('click', function(event) {
+>>>>>>> 219290d11ca1b9abdcd9276ad6eac5ac0ca9b7cf
             event.preventDefault();
             opener.dismissRelatedLookupPopup(window, $(this).data("popup-opener"));
         });

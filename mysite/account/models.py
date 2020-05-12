@@ -1,6 +1,24 @@
 # -*- coding: utf-8 -*-
+
+import datetime
 from django.db import models
 
+
+
+class School(models.Model):
+    """ 学校 """
+    name = models.CharField(max_length=32,verbose_name='学校名字')
+    address = models.CharField(max_length=100,verbose_name='学校地址')
+    #date = models.DateTimeField(default=datetime.datetime.now, verbose_name='添加时间', null=True, blank=True)
+    num = models.IntegerField(verbose_name='建校时间', blank=True, null=True)
+    per = models.IntegerField(verbose_name='高考升学率', blank=True, null=True)
+    
+    class Meta:
+        verbose_name = '学校'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 

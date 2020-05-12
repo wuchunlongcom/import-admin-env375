@@ -1,6 +1,9 @@
 python3.7.5   django2.2.6  部署正常                      
 
 ### 功能：使用django-import-export  admin具有导入和导出数据库的数据功能。 
+支持中文导入excel
+存在问题：有日期字段时导入excel错误！2020.05.12
+
       
 ```
 一、 运行      

@@ -255,6 +255,11 @@ class ImportMixin(ImportExportMixinBase):
         for chunk in import_file.chunks():
             data += chunk
 
+        # 解决csv tsv导入中文出错问题 吴春龙 2020.05.12
+        if '.csv' in import_file.name or '.tsv' in import_file.name:
+            # 将'gbk'字节包转换成'utf-8'字节包；
+            data = data.decode('gbk').encode('utf-8')
+
         tmp_storage.save(data, input_format.get_read_mode())
         return tmp_storage
 
@@ -294,6 +299,8 @@ class ImportMixin(ImportExportMixinBase):
                 if not input_format.is_binary() and self.from_encoding:
                     data = force_text(data, self.from_encoding)
                 dataset = input_format.create_dataset(data)
+            
+
             except UnicodeDecodeError as e:
                 return HttpResponse(_(u"<h1>Imported file has a wrong encoding: %s</h1>" % e))
             except Exception as e:

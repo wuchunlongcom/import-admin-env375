@@ -2,13 +2,22 @@
 from django.shortcuts import render
 from django.http.response import HttpResponseRedirect, HttpResponse,\
     StreamingHttpResponse
-from django.contrib.auth.decorators import login_required #使用注意在settings.py中设置 LOGIN_URL = '/login/'
+#使用注意在settings.py中设置 LOGIN_URL = '/login/'    
+from django.contrib.auth.decorators import login_required 
 
 
 # http://localhost:8000/
 #@login_required
 def index(request):           
     meg = 'hello world!'
+    return render(request, 'account/index.html', context=locals()) 
+
+def pageInfo(request, page):           
+    meg = page
+    return render(request, 'account/index.html', context=locals()) 
+
+def buildingInfo(request, campus):           
+    meg = campus
     return render(request, 'account/index.html', context=locals()) 
 
 

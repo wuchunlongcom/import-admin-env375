@@ -10,7 +10,9 @@ python3.7.5   django2.2.6  部署正常
 op0/123 Blog、Author、Entry数据库有 查看(view)、创建(add)、更改(change)权限，Blog有删除权限。
 cx0/123 Blog、Author、Entry数据库有 查看(view)、创建(add)权限。
 
-3、一对多、多对多数据初始化，写入数据库。    
+3、一对多、多对多数据初始化，写入数据库。
+
+4、path 路由设置；    
 ```
 ```
 一、 运行      

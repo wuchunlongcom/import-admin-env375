@@ -8,14 +8,10 @@ from django.contrib.auth.decorators import login_required #使用注意在settin
 # http://localhost:8000/
 #@login_required
 def index(request):           
-    meg = 'hello world!  index0000'
+    meg = 'hello world!'
     return render(request, 'account/index.html', context=locals()) 
 
-# http://localhost:8000/index1/
-#@login_required
-def index1(request):           
-    meg = 'hello world!  index1111'
-    return render(request, 'account/index.html', context=locals()) 
+
 
 """
 from account.models import Blog, Author, Entry

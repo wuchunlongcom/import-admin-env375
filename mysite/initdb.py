@@ -11,22 +11,59 @@ if __name__ == "__main__":
     django.setup()
     from django.contrib.auth.models import User, Group, Permission
     
-    #组添加权限 django==2.2.6 通用
+    if not User.objects.filter(username = 'admin'):
+        User.objects.create_superuser('admin', 'admin@test.com','admin')
+    
+    """ 查看(view)、创建(add)、更改(change)、删除(delete)  """
     operatorGroup = Group.objects.create(name='Operator')
     operatorGroup.permissions.add(
-        #Permission.objects.get(name='Can add blog'),
-              
-    )
+        Permission.objects.get(name='Can add blog'),
+        Permission.objects.get(name='Can add author'),
+        Permission.objects.get(name='Can add entry'), 
+        Permission.objects.get(name='Can change blog'),
+        Permission.objects.get(name='Can change author'),
+        Permission.objects.get(name='Can change entry'),
+        Permission.objects.get(name='Can view blog'),
+        Permission.objects.get(name='Can view author'),
+        Permission.objects.get(name='Can view entry'),
+        # 只有删除Blog权限        
+        Permission.objects.get(name='Can delete blog'),
+
+        )
     operatorGroup.save()
     
+    """ 查看(view)、创建(add) """
     customerGroup = Group.objects.create(name='Customer')
-    customerGroup.permissions.add()
+    customerGroup.permissions.add(
+        Permission.objects.get(name='Can add blog'),
+        Permission.objects.get(name='Can add author'),
+        Permission.objects.get(name='Can add entry'), 
+        Permission.objects.get(name='Can view blog'),
+        Permission.objects.get(name='Can view author'),
+        Permission.objects.get(name='Can view entry'), 
+        
+        )
     customerGroup.save()
         
-    if not User.objects.filter(username = 'admin'):
-        User.objects.create_superuser('admin', 'admin@test.com','admin')     
+    OPEERATOR_NUM = 1
+    for i in range(OPEERATOR_NUM):
+        user = User.objects.create_user('op%s' % i, 'op%s@test.com' % i, '123')
+        user.is_staff = True
+        user.is_superuser = False
+        user.groups.add(operatorGroup) #加入组operatorGroup
+        user.save()      
 
-"""    
+    COMPANY_NUM = 1
+    for i in range(COMPANY_NUM):
+        user = User.objects.create_user('cx%s' % i, 'cx%s@test.com' % i, '123')
+        user.is_staff = True
+        user.is_superuser = False
+        user.groups.add(customerGroup) #加入组customerGroup
+        user.save()   
+    
+    #cxs = User.objects.filter(groups__name='Customer') #获得在组Customer的用户
+    #ops = User.objects.filter(groups__name='Operator') #获得在组Customer的用户
+           
     from account.models import Blog, Author, Entry
     blogs = [('命运共同体','构建'), ('中国制度','自我完善'), ('创新发展','制度保障')]
     items = [Blog(name=i[0], tagline=i[1]) for i in blogs]
@@ -44,19 +81,21 @@ if __name__ == "__main__":
               ('人民日报', '为加快推动高质量发展提供制度保障'),
               ('人民日报声音', '承担源头责任 拿出干流担当')]
     
-    terms = [( Blog.objects.get(name=blogs[random.randint(0,len(blogs)-1)][0]),
+    #一对多
+    items = [(Blog.objects.get(name=blogs[random.randint(0,len(blogs)-1)][0] ),
               i[0], i[1]) for i in entrys]
 
-    items = [Entry(blog=i[0], headline=i[1], body_text=i[2]) for i in terms]
+    items = [Entry(blog=i[0], headline=i[1], body_text=i[2]) for i in items]
     Entry.objects.bulk_create(items, batch_size=20)
      
     #多对多 根据headline(大字标题不同)  作者赋值一样   
-#     [(e.author.add(Author.objects.get(name = authors[0][0]),
-#                    Author.objects.get(name = authors[1][0]),
-#                    Author.objects.get(name = authors[2][0]),
-#                    Author.objects.get(name = authors[3][0])),e.save())  
-#     for e in Entry.objects.all()]
+    [(e.author.add(Author.objects.get(name = authors[0][0]),
+                   Author.objects.get(name = authors[1][0]),
+                   Author.objects.get(name = authors[2][0]),
+                   Author.objects.get(name = authors[3][0])),e.save())  
+    for e in Entry.objects.all()]
 
+""" 
     #多对多 根据headline(大字标题不同)  作者赋值不一样 
     e = Entry.objects.get(headline = entrys[0][0])
     e.author.add(Author.objects.get(name = authors[0][0]),
